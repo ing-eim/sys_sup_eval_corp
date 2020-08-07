@@ -53,6 +53,15 @@
         });
         
         
+        
+        $("#txtc_i_placaobs").keypress(function(e){
+                if(e.keyCode == 13){
+                    
+                    searchobservaciones();
+                }
+        })
+        
+        
 });
     
 function UploadQueja(){
@@ -80,6 +89,20 @@ function UploadQueja(){
            success:function (resp){
                 var r = resp.split("|");
                 alert(r[1]);
+           }
+        });
+    }
+    
+    
+
+    function searchobservaciones(){
+        var c_i_placa = $("#txtc_i_placaobs").val();
+        $.ajax({
+           url: 'SearchObservacion',
+           type: 'post',
+           data:{c_i_placa:c_i_placa},
+           success:function (resp){               
+                $("#tblobservaciones").html(resp);
            }
         });
     }

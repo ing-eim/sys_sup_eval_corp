@@ -188,17 +188,26 @@
                     </div>
                 </div>
             </div>
-            <!-- ****************************  -->
+    <!------------------    CONTENEDORES OBSERVACIONES   --------------------------------------------------------------------------------------------------------->        
+            <!-- ********   CONTENEDOR OBSERVACIONES INSERT   ********************  -->           
             <div class="tab-pane fade" id="nav-observaciones" role="tabpanel" aria-labelledby="Observaciones al personal">
                 <div class="container">
                     <br>
-                    <h1> Observaciones al Personal </h1>                    
+                    <h1> Observaciones al Personal </h1>
                     <div class="form-row">
-                        <div class="form-group col-md-4">                            
+                        <div class="form-group col-md-4">
                             <label for="txtc_i_placabol"> Placa </label>
-                            <input type="text" class="form-control" id="txtc_i_placaobs" name = "txtc_i_placaobs" value = ""/>   
-                        </div>                            
+                            <input type="text" class="form-control" id="txtc_i_placaobs" name = "txtc_i_placaobs" value = ""/><small>Ingrese la Placa y Presione Enter</small>
+                        </div>
                     </div>
+                    
+                    <div class="form-row">
+                        <div class="container" id="tblobservaciones">                           
+                        </div>
+                    </div>
+                    
+                    <!-- VENTANA MODAL PARA INSERTAR NUEVA OBSERVACION-->
+                    <div class="">
                     <div class="form-row">
                         <div class="form-group col-md-4">                            
                             <label for="txttipoestimulo"> Fecha de Observacion </label>
@@ -216,10 +225,16 @@
                             <input type = "button" id="btnGuardaObservacion" class="form-control btn btn-success" value="Guardar" onclick ='UploadObservacion();'>
                         </div>                        
                     </div>
+                    </div>
+                    <!-- CIERRA VENTANA MODAL PARA INSERTAR NUEVA OBSERVACION -->
+                    
                 </div>
-            </div>
-            
-            <!-- **************************** -->
+                
+                
+                
+            </div>            
+            <!-- *******  CIERRA CONTENEDOR INSERT OBSERVACIONES   ********************* -->
+    <!------------------------------------------------------------------------------------------------------------------------->        
         </div>
     </body>
 </html>

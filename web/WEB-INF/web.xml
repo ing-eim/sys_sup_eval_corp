@@ -22,6 +22,10 @@
         <servlet-name>LoadObservacion</servlet-name>
         <servlet-class>pbi.supeval.servlets.LoadObservacion</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SearchObservacion</servlet-name>
+        <servlet-class>pbi.supeval.servlets.SearchObservacion</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UploadFiles</servlet-name>
         <url-pattern>/view/UploadFiles</url-pattern>
@@ -37,6 +41,10 @@
     <servlet-mapping>
         <servlet-name>LoadObservacion</servlet-name>
         <url-pattern>/view/LoadObservacion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchObservacion</servlet-name>
+        <url-pattern>/view/SearchObservacion</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
