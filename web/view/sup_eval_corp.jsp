@@ -200,6 +200,9 @@
                             <input type="text" class="form-control" id="txtc_i_placaobs" name = "txtc_i_placaobs" value = ""/><small>Ingrese la Placa y Presione Enter</small>
                         </div>
                     </div>
+                    <div class="form-row" id='btnagregaobs' style='display: none;'>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalNuevaObservacion"> Agregar Observación </button>
+                    </div>
                     
                     <div class="form-row">
                         <div class="container" id="tblobservaciones">                           
@@ -207,25 +210,75 @@
                     </div>
                     
                     <!-- VENTANA MODAL PARA INSERTAR NUEVA OBSERVACION-->
-                    <div class="">
-                    <div class="form-row">
-                        <div class="form-group col-md-4">                            
-                            <label for="txttipoestimulo"> Fecha de Observacion </label>
-                            <input type="date"  class="form-control" id="txtfechaobservacion" name = "txtfechaobservacion" value = ""/>   
-                        </div>                            
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-lg-10">                            
-                            <label for="txt"> Observaciones </label>
-                            <textarea id ='txtobservaciones' class="form-control" placeholder="Escriba aqui observaciones realizadas al personal ..."></textarea>
+                    <!-- Button trigger modal -->
+                    
+                    <!-- Modal -->
+                    <div class="modal fade" id="ModalNuevaObservacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel"> Agregar Observación </h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4">                            
+                                            <label for="txtfechaobservacion"> Fecha de Observacion </label>
+                                            <input type="date"  class="form-control" id="txtfechaobservacion" name = "txtfechaobservacion" value = ""/>   
+                                        </div>                            
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-lg-10">                            
+                                            <label for="txtobservaciones"> Observaciones </label>
+                                            <textarea id ='txtobservaciones' class="form-control" placeholder="Escriba aqui observaciones realizadas al personal ..."></textarea>
+                                        </div>
+                                    </div>                                    
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                    <button type="button" class="btn btn-primary" onclick="UploadObservacion();" data-dismiss="modal">Guardar</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="row col-10">
-                        <div class="form-group">                                                       
-                            <input type = "button" id="btnGuardaObservacion" class="form-control btn btn-success" value="Guardar" onclick ='UploadObservacion();'>
-                        </div>                        
+                    <!-- -->
+                    <!--MODAL PARA EDICIÓN DE REGISTRO -->
+                    <div class="modal fade" id="ModalEditaObservacion" tabindex="-1" role="dialog" aria-labelledby="ModalEditarObsrevacion" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel"> Editar Observación </h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-row">
+                                        <input type="hidden" id="pk_i_obs" value=""> 
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4">                            
+                                            <label for="txtfechaobservacion_edit"> Fecha de Observacion </label>
+                                            <input type="date"  class="form-control" id="txtfechaobservacion_edit" name = "txtfechaobservacion" value = ""/>   
+                                        </div>                            
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-lg-10">                            
+                                            <label for="txtobservaciones_edit"> Observaciones </label>
+                                            <textarea id ='txtobservaciones_edit' class="form-control" placeholder="Escriba aqui observaciones realizadas al personal ..."></textarea>
+                                        </div>
+                                    </div>                                    
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                    <button type="button" class="btn btn-primary" onclick="UpdateObservacion();" data-dismiss="modal">Guardar</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    </div>
+                    
                     <!-- CIERRA VENTANA MODAL PARA INSERTAR NUEVA OBSERVACION -->
                     
                 </div>

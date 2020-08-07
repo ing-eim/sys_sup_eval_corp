@@ -50,14 +50,17 @@
                         var r = res.split("|");
                         alert(r[1]);
                 });
-        });
+        });        
         
-        
-        
-        $("#txtc_i_placaobs").keypress(function(e){
-                if(e.keyCode == 13){
-                    
-                    searchobservaciones();
+        $("#txtc_i_placaobs").keyup(function(e){
+                var l = $(this).val().length;                
+                if ( l > 0){
+                    $("#btnagregaobs").css({'display': 'block'});
+                }else{
+                    $("#btnagregaobs").css({'display': 'none'});
+                }               
+                if(e.keyCode === 13){                    
+                    searchobservaciones(); 
                 }
         })
         
@@ -117,7 +120,65 @@ function UploadQueja(){
            data:{c_i_placa:c_i_placa,f_d_observacion:f_d_observacion,observaciones:observaciones},
            success:function (resp){
                 var r = resp.split("|");
-                alert(r[1]);
+                //alert(r[1]);
+                if(r[0] === true || r[0] === 'true')
+                    searchobservaciones();
+                else
+                    alert(r[1]);
            }
         });
+    }
+    
+    
+    function UpdateObservacion(){
+        var pk_i_obs = $("#pk_i_obs").val();
+        var f_d_observacion = $("#txtfechaobservacion_edit").val();
+        var observaciones = $("#txtobservaciones_edit").val();
+        $.ajax({
+           url: 'UpdateObservacion',
+           type: 'post',
+           data:{pk_i_obs:pk_i_obs,f_d_observacion:f_d_observacion,observaciones:observaciones},
+           success:function (resp){
+                var r = resp.split("|");                
+                if(r[0] === true || r[0] === 'true')
+                    searchobservaciones();
+                else
+                    alert(r[1]);
+           }
+        });
+    }
+    
+    function CargaDatosEditaObs(element,pk_i_observacion){        
+        //var cveobservacion = ($(td).parent().parent().find("td").eq(1).text()).trim();
+	
+	var observacion = ($(element).parent().parent().find("td").eq(1).text()).trim();
+	var fecha = ($(element).parent().parent().find("td").eq(2).text()).trim();	
+        alert(observacion);
+        $("#txtfechaobservacion_edit").val(fecha);
+        $("#txtobservaciones_edit").val(observacion);
+        $("#pk_i_obs").val(pk_i_observacion);
+
+    }
+    
+    function DeleteObs(pk_i_observacion){
+        
+        if (confirm("¿Está seguro de eliminar ésta Observación al Elemento?")){
+            $.ajax({
+                url: 'DeleteObservacion',
+                type: 'post',
+                data:{pk_i_obs:pk_i_observacion},
+                success:function (resp){
+                    var r = resp.split("|");                
+                    if(r[0] === true || r[0] === 'true')
+                        searchobservaciones();
+                    else
+                        alert(r[1]);
+                }
+            });
+        }
+    }
+    
+    function clearformobservaciones(){
+         $("#txtfechaobservacion").val("");
+         $("#txtobservaciones").val("");
     }
