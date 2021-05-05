@@ -45,8 +45,7 @@
                 cache: false,
                 contentType: false,
 	        processData: false
-            })
-                .done(function(res){
+            }).done(function(res){
                         var r = res.split("|");
                         alert(r[1]);
                 });
